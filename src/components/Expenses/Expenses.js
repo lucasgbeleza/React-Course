@@ -1,9 +1,8 @@
-import React, { Component } from "react";
 import ExpenseItem from "./ExpenseItem";
-import Card from './Card'
-class Expenses extends React.Component {
-  render() {
-    let data = this.props.dataApp;
+import Card from '../UI/Card'
+
+const Expenses = (props) => {
+    let data = props.dataApp;
     return (
       <div>
         {data.map((element) => (
@@ -18,6 +17,5 @@ class Expenses extends React.Component {
       </div>
     );
   }
-}
 
 export default Expenses;

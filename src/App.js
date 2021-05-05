@@ -1,10 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import ExpenseItem from "./components/ExpenseItem";
-import Expenses from "./components/Expenses";
+import ExpenseItem from "./components/Expenses/ExpenseItem";
+import Expenses from "./components/Expenses/Expenses";
 
-class App extends React.Component {
-  render() {
+const App = () => {
     const expenses = [
       {
         id: "e1",
@@ -39,5 +36,5 @@ class App extends React.Component {
       </div>
     );
   }
-}
+
 export default App;

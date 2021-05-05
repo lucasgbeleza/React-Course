@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
 import ExpenseDate from './ExpenseDate'
 import './ExpenseItem.css'
-import Card from './Card'
+import Card from '../UI/Card'
 
-class ExpenseItem extends Component {
- render(){
-     const title = this.props.title
-     const amount = this.props.amount
-     const date = this.props.date
+const ExpenseItem = (props) => {
+     const title = props.title
+     const amount = props.amount
+     const date = props.date
         return (
             <Card className="expense-item">
                <ExpenseDate> dateItem = {date} </ExpenseDate>
@@ -18,5 +17,5 @@ class ExpenseItem extends Component {
             </Card>
         );
     }
-}
+
 export default ExpenseItem;

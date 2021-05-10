@@ -66,6 +66,12 @@ const ExpenseForm = () => {
     setEnteredDate(event.target.value)
   }
 
+  const clearInputFields = () => {
+    setEnteredTitle('')
+    setEnteredAmount('')
+    setEnteredDate('')
+  }
+
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -76,7 +82,7 @@ const ExpenseForm = () => {
     };
 
     console.log(expenseData);
-    console.log((expenseData.amount * 2));
+    clearInputFields();
   }
 
   return (
@@ -85,17 +91,31 @@ const ExpenseForm = () => {
         <div className="new-expense__constrols">
           <div className="new-expense__control">
             <label htmlFor="titleNewExpense">Title</label>
-            <input type="text" name="titleNewExpense" onChange={titleChangeHandler} />
+            <input 
+            type="text" 
+            name="titleNewExpense" 
+            onChange={titleChangeHandler}
+            value={enteredTitle} />
           </div>
 
           <div className="new-expense__control">
             <label htmlFor="amountNewExpense">Amount</label>
-            <input type="number" name="amountNewExpense" min="0.01" step="0.01" onChange={amountChangeHandler} />
+            <input 
+            type="number" 
+            name="amountNewExpense" 
+            min="0.01" step="0.01" 
+            onChange={amountChangeHandler}
+            value={enteredAmount} />
           </div>
 
           <div className="new-expense__control">
             <label htmlFor="dateNewExpense">Date</label>
-            <input type="date" name="dateNewExpense" min="2019-01-01" max="2022-12-31" onChange={dateChangeHandler} />
+            <input 
+            type="date" 
+            name="dateNewExpense" 
+            min="2019-01-01" max="2022-12-31" 
+            onChange={dateChangeHandler}
+            value={enteredDate} />
           </div>
         </div>
         <div className="new-expense__actions">

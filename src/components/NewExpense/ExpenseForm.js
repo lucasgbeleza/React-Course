@@ -2,13 +2,54 @@ import {useState} from 'react';
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-
-  // another way of declaring multiple states: 
+  useState('')
+  /*
+  // START of another way of declaring multiple states: 
   const [userInput, setUserInput] = useState({
-    
+     enteredTitle: '',
+     enteredAmount: '',
+     enteredDate: ''
   }) 
 
-  useState('')
+  const titleChangeHandler = (event) => {
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: event.target.value
+    // })
+
+    // correct way -> passing a function to deal with React lifecycles
+    setUserInput((prevState) => {
+      return {...prevState, enteredTitle: event.target.value}
+    });
+  }
+
+  const amountChangeHandler = (event) => {
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount: event.target.value
+    // })
+
+    // correct way -> passing a function to deal with React lifecycles
+    setUserInput((prevState) => {
+      return {...prevState, enteredAmount: event.target.value}
+    });
+  }
+
+  const dateChangeHandler = (event) => {
+    // setUserInput({
+    //   ...userInput,
+    //   enteredDate: event.target.value
+    // })
+
+    // correct way -> passing a function to deal with React lifecycles
+    setUserInput((prevState) => {
+      return {...prevState, enteredDate: event.target.value}
+    })
+
+  }
+  // END one state use for multiple itens
+
+  */
   const [enteredTitle, setEnteredTitle] = useState('')
   const [enteredAmount, setEnteredAmount] = useState('')
   const [enteredDate, setEnteredDate]= useState('')
@@ -25,23 +66,36 @@ const ExpenseForm = () => {
     setEnteredDate(event.target.value)
   }
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const expenseData = {
+      title: enteredTitle,
+      amount: parseFloat(enteredAmount),
+      date: new Date(enteredDate)
+    };
+
+    console.log(expenseData);
+    console.log((expenseData.amount * 2));
+  }
+
   return (
     <div>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className="new-expense__constrols">
           <div className="new-expense__control">
-            <label for="titleNewExpense">Title</label>
+            <label htmlFor="titleNewExpense">Title</label>
             <input type="text" name="titleNewExpense" onChange={titleChangeHandler} />
           </div>
 
           <div className="new-expense__control">
-            <label for="amountNewExpense">Amount</label>
+            <label htmlFor="amountNewExpense">Amount</label>
             <input type="number" name="amountNewExpense" min="0.01" step="0.01" onChange={amountChangeHandler} />
           </div>
 
           <div className="new-expense__control">
-            <label for="dateNewExpense">Date</label>
-            <input type="date" name="dateNewExpense" min="2019-01-01" max="2022-12-31"/>
+            <label htmlFor="dateNewExpense">Date</label>
+            <input type="date" name="dateNewExpense" min="2019-01-01" max="2022-12-31" onChange={dateChangeHandler} />
           </div>
         </div>
         <div className="new-expense__actions">

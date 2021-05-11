@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   useState('')
   /*
   // START of another way of declaring multiple states: 
@@ -81,7 +81,8 @@ const ExpenseForm = () => {
       date: new Date(enteredDate)
     };
 
-    console.log(expenseData);
+    // parente function -> pass data from child do parent component
+    props.onSaveExpenseData(expenseData);
     clearInputFields();
   }
 

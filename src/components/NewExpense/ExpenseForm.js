@@ -2,7 +2,6 @@ import {useState} from 'react';
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
-  useState('')
   /*
   // START of another way of declaring multiple states: 
   const [userInput, setUserInput] = useState({

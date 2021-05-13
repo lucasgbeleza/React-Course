@@ -1,19 +1,22 @@
-import { useState } from 'react';
+import { useState } from "react";
 import ExpenseItem from "./ExpenseItem";
-import Card from '../UI/Card';
-import ExpensesFilter from './ExpensesFilter';
+import Card from "../UI/Card";
+import ExpensesFilter from "./ExpensesFilter";
 
 const Expenses = (props) => {
-  const [filteredYear, setFilteredYear] = useState('2021');
+  const [filteredYear, setFilteredYear] = useState("2021");
   let data = props.dataApp;
 
   const dataFromFilter = (filteredData) => {
     setFilteredYear(filteredData);
-  }
+  };
 
   return (
     <div>
-      <ExpensesFilter defaultYear={filteredYear} filterHandler={dataFromFilter} />
+      <ExpensesFilter
+        defaultYear={filteredYear}
+        filterHandler={dataFromFilter}
+      />
       {data.map((element) => (
         <Card className="expenses" key={element.id}>
           <ExpenseItem
@@ -25,6 +28,6 @@ const Expenses = (props) => {
       ))}
     </div>
   );
-}
+};
 
 export default Expenses;

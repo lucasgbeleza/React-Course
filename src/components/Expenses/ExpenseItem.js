@@ -10,9 +10,9 @@ const ExpenseItem = (props) => {
   const date = props.date;
 
   //  name convention: functions that are not used anywhere else and are related to event handles should have the event name + handler suffix
-  const clickHandler = () => {
-      setTitle("Updated!!!");
-  };
+  // const clickHandler = () => {
+  //     setTitle("Updated!!!");
+  // };
   return (
     <Card className="expense-item">
       <ExpenseDate> dateItem = {date} </ExpenseDate>
@@ -20,7 +20,7 @@ const ExpenseItem = (props) => {
         <h2> {title} </h2>
         <div className="expense-item__price"> ${amount} </div>
       </div>
-      <button onClick={clickHandler}>Change Title</button>
+      {/* <button onClick={clickHandler}>Change Title</button> */}
     </Card>
   );
 };

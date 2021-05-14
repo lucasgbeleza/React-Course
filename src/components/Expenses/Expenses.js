@@ -9,7 +9,13 @@ const Expenses = (props) => {
 
   const dataFromFilter = (filteredData) => {
     setFilteredYear(filteredData);
+    
   };
+
+  const filterByYear = data.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear
+  });
+ 
 
   return (
     <div>
@@ -18,7 +24,8 @@ const Expenses = (props) => {
           defaultYear={filteredYear}
           filterHandler={dataFromFilter}
         />
-        {data.map((expense) => (
+        
+        {filterByYear.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}

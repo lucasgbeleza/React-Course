@@ -9,7 +9,6 @@ const Expenses = (props) => {
 
   const dataFromFilter = (filteredData) => {
     setFilteredYear(filteredData);
-    
   };
 
   const filterByYear = data.filter((expense) => {
@@ -34,9 +33,7 @@ const Expenses = (props) => {
           defaultYear={filteredYear}
           filterHandler={dataFromFilter}
         />
-        {/* <button onClick={changeArrayList}>teste</button> */}
-        
-        {/* {filterByYear.map((expense) => ( */}
+
         {changeArrayList(filteredYear).map((expense) => (
           <ExpenseItem
             key={expense.id}

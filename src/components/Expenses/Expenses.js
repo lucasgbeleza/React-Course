@@ -16,6 +16,16 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filteredYear
   });
  
+  const changeArrayList = (year) => {
+    let yearFromData = data.map((itens) => {
+       return itens.date.getFullYear().toString();
+    })
+    if(!(yearFromData.includes(year)) && year === "0"){
+      return data;
+    } else {
+      return filterByYear;
+    } 
+  }
 
   return (
     <div>
@@ -24,8 +34,10 @@ const Expenses = (props) => {
           defaultYear={filteredYear}
           filterHandler={dataFromFilter}
         />
+        {/* <button onClick={changeArrayList}>teste</button> */}
         
-        {filterByYear.map((expense) => (
+        {/* {filterByYear.map((expense) => ( */}
+        {changeArrayList(filteredYear).map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}

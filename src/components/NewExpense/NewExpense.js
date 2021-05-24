@@ -3,7 +3,7 @@ import './NewExpense.css';
 import ExpenseForm from './ExpenseForm';
 
 const NewExpense = (props) => {
-    const [formVisibility, setFormVisibility] = useState('false')
+    const [formVisibility, setFormVisibility] = useState(false)
 
     const saveExpenseDataHandler = (enteredExpenseData) => {
         const newData = {
@@ -12,19 +12,19 @@ const NewExpense = (props) => {
         }
         props.onAddExpense(newData);
     }
-    let showForm = <ExpenseForm onSaveExpenseData={saveExpenseDataHandler}/>
-    const teste = () => {
-        if(formVisibility == "true"){
-            showForm = <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} visible/>
-        } else {
-            showForm = <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} hidden/>
-        }
+   
+    const startEditingHandler = () => {
+        setFormVisibility(true)
+    }
+
+    const stopEditingHandler = () => {
+        setFormVisibility(false)
     }
     
     return (
         <div className="new-expense">
-            <div>{showForm}</div>
-            <button className="new-expense" onClick={teste}> Add new expense </button>
+            {!formVisibility && <button onClick={startEditingHandler}> Add new expense </button>}
+            {formVisibility && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancel={stopEditingHandler}/>}
         </div>
     )
 }

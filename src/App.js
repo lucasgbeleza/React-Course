@@ -41,8 +41,7 @@ const App = () => {
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses dataApp={expenses} />
-      {window.confirm('url permanece')}
-      {alert('alert')}
+      
     </div>
   );
 };
